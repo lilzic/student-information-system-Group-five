@@ -7,23 +7,79 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Student Information Management System</h1>
-    </header>
 
-    <main>
-      <!-- Member A & D: Registration Form Section -->
-      <section id="form-section">
-        <!-- Form injected here -->
-      </section>
+  <!-- ===== SECTION 1: PAGE SHELL (Owner: Isaac Asuku Stephen) ===== -->
+  <header class="site-header">
+    <h1>Student Information Management System</h1>
+    <p>SEN 401 Software Configuration and Management Lab Test 1</p>
+  </header>
 
-      <!-- Member B & C: Records Display Section -->
-      <section id="records-section">
-        <!-- Records table injected here -->
-      </section>
-    </main>
-  </div>
+  <main class="layout">
+
+    <!-- ===== SECTION 2: REGISTRATION FORM (Owner: Usman Aliyu Jibril) ===== -->
+    <section class="card form-section" aria-labelledby="form-heading">
+      <h2 id="form-heading">Register a Student</h2>
+
+      <form id="student-form" novalidate>
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="fullName" placeholder="e.g. Aisha Bello" autocomplete="off" required>
+          <span class="error-text" id="full-name-error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="matric-number">Matriculation Number</label>
+          <input type="text" id="matric-number" name="matricNumber" placeholder="e.g. NEU/23/24B/SEN/00001" autocomplete="off" required>
+          <span class="error-text" id="matric-number-error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="programme">Programme</label>
+          <select id="programme" name="programme" required>
+            <option value="">-- Select programme --</option>
+            <option value="Software Engineering">Software Engineering</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Information Technology">Information Technology</option>
+          </select>
+          <span class="error-text" id="programme-error" aria-live="polite"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="register-btn">Register Student</button>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ===== SECTION 3: RECORDS TABLE (Owner: Luqman Yusuf) ===== -->
+    <section class="card table-section" aria-labelledby="table-heading">
+      <h2 id="table-heading">Registered Students <span id="student-count" class="count-badge">0</span></h2>
+
+      <p id="empty-message" class="empty-message">No students registered yet. Use the form to add the first record.</p>
+
+      <div class="table-wrapper">
+        <table id="students-table">
+          <caption class="visually-hidden">List of registered students</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Matriculation Number</th>
+              <th scope="col">Programme</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="students-body"></tbody>
+        </table>
+      </div>
+
+      <p class="storage-note">Records are saved in this browser only (localStorage). They are not shared online.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>SEN 401 Group Five &mdash; Built with HTML, CSS and vanilla JavaScript</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
