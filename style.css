@@ -1,25 +1,102 @@
-/* Base Layout Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+/* ===== Shared based style ===== */
+:root {
+  --color-primary: #1d4ed8;
+  --color-primary-dark: #1e3a8a;
+  --color-danger: #b91c1c;
+  --color-danger-dark: #7f1d1d;
+  --color-success: #166534;
+  --color-bg: #f1f5f9;
+  --color-card: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #475569;
+  --color-border: #cbd5e1;
+  --radius: 8px;
 }
+
+* { box-sizing: border-box; }
 
 body {
-  background-color: #f4f6f9;
-  padding: 20px;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-header {
+.site-header {
+  background: var(--color-primary-dark);
+  color: #fff;
   text-align: center;
-  margin-bottom: 30px;
+  padding: 1.5rem 1rem;
 }
+.site-header h1 { margin: 0 0 0.25rem; font-size: 1.6rem; }
+.site-header p { margin: 0; opacity: 0.9; }
+
+.layout {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.card h2 { margin-top: 0; font-size: 1.25rem; }
+
+.site-footer { text-align: center; color: var(--color-muted); padding: 1.5rem 1rem; font-size: 0.9rem; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ===== SECTION 2: REGISTRATION FORM STYLING (Owner: Bello Khalid Bakari) ===== */
+.form-group { margin-bottom: 1rem; }
+
+.form-group label { display: block; font-weight: bold; margin-bottom: 0.35rem; }
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: 3px solid #93c5fd;
+  border-color: var(--color-primary);
+}
+
+.form-group input.input-invalid,
+.form-group select.input-invalid { border-color: var(--color-danger); }
+
+.error-text { display: block; min-height: 1.2rem; color: var(--color-danger); font-size: 0.85rem; margin-top: 0.25rem; }
+
+.btn {
+  padding: 0.65rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: #fff;
+}
+.btn-primary { background: var(--color-primary); }
+.btn-primary:hover { background: var(--color-primary-dark); }
+
+.form-message { margin: 0.9rem 0 0; font-weight: bold; min-height: 1.4rem; }
+.form-message.success { color: var(--color-success); }
+.form-message.error { color: var(--color-danger); }
 
 /* ===== SECTION 3: RECORDS TABLE STYLING (Owner: Ismail Ilu Muhammed) ===== */
 .count-badge {
@@ -56,3 +133,16 @@ header {
 .btn-delete:hover { background: var(--color-danger-dark); }
 
 .storage-note { font-size: 0.85rem; color: var(--color-muted); margin-bottom: 0; }
+
+/* ===== RESPONSIVE RULES===== */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  #students-table thead { display: none; }
+  #students-table, #students-table tbody, #students-table tr, #students-table td { display: block; width: 100%; }
+  #students-table tr { border: 1px solid var(--color-border); border-radius: var(--radius); margin-bottom: 0.8rem; padding: 0.3rem 0; }
+  #students-table td { border-bottom: none; padding: 0.4rem 0.8rem; }
+  #students-table td::before { content: attr(data-label) ": "; font-weight: bold; }
+}
